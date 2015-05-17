@@ -763,7 +763,8 @@ extern char* absoluteFilename (const char *file)
 			}
 			else if (slashp [2] == PATH_SEPARATOR  ||  slashp [2] == '\0')
 			{
-				strcpy (slashp, slashp + 2);
+				memmove(slashp, slashp + 2, strlen(slashp + 2));
+				slashp[strlen(slashp + 2)] = '\0';
 				continue;
 			}
 		}
